@@ -6,6 +6,7 @@ AUTHOR = 'Felipe N Souza'
 SITENAME = 'FNScoder'
 SITEURL = 'http://fnscoder.com/'
 THEME = 'pelican-hyde'
+PROFILE_IMAGE = 'avatar.jpg'
 
 PATH = 'content'
 
