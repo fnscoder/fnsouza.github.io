@@ -28,7 +28,7 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('email', 'fnscoder@gmail.com')
+SOCIAL = (('email', 'fnscoder@gmail.com'),
           ('github', 'https://github.com/fnscoder'),
           ('twitter', 'https://twitter.com/fnscoder'),
           ('linkedin', 'https://www.linkedin.com/in/fnscoder/'),)
