@@ -34,11 +34,11 @@ SOCIAL = (('email', 'fnscoder@gmail.com'),
           ('github', 'https://github.com/fnscoder'),
           ('twitter', 'https://twitter.com/fnscoder'),
           ('linkedin', 'https://www.linkedin.com/in/fnscoder/'),
-          ('file-text', 'https://drive.google.com/file/d/0B6M0onVHYLkyWGtzWW5pQVJLZzQ/view?usp=sharing'),)
+          ('file-text', 'pdfs/cv.pdf'),)
 
 DEFAULT_PAGINATION = 10
 
-STATIC_PATHS = ['images', 'extras/CNAME', 'extras/robots.txt']
+STATIC_PATHS = ['images', 'pdfs', 'extras/CNAME', 'extras/robots.txt']
 EXTRA_PATH_METADATA = {
     'extras/CNAME': {'path': 'CNAME'},
     'extras/robots.txt': {'path': 'robots.txt'}
