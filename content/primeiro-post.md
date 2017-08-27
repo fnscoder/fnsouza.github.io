@@ -1,6 +1,11 @@
 Title: Primeiro Post
 Date: 2017-08-27 02:35
-Category: Review
+Modified: 2017-08-27 16:10
+Category: Python
+Tags: python, pelican, blog
+Slug: my-first-post
+Authors: Felipe N Souza
+Summary: Primeiro post com python + pelican
 
 Fala galera!
 
