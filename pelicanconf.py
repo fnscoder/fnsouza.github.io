@@ -33,7 +33,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('email', 'fnscoder@gmail.com'),
           ('github', 'https://github.com/fnscoder'),
           ('twitter', 'https://twitter.com/fnscoder'),
-          ('linkedin', 'https://www.linkedin.com/in/fnscoder/'),)
+          ('linkedin', 'https://www.linkedin.com/in/fnscoder/'),
+          ('file-text', 'https://drive.google.com/file/d/0B6M0onVHYLkyWGtzWW5pQVJLZzQ/view?usp=sharing'),)
 
 DEFAULT_PAGINATION = 10
 
