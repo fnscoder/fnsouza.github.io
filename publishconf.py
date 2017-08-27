@@ -21,4 +21,4 @@ DELETE_OUTPUT_DIRECTORY = True
 # Following items are often useful when publishing
 
 DISQUS_SITENAME = "fnscoder"
-#GOOGLE_ANALYTICS = ""
+GOOGLE_ANALYTICS = "UA-105366023-1"
