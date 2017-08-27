@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Felipe N Souza'
 SITENAME = 'FNScoder'
-SITEURL = ''
+SITEURL = 'http://fnscoder.com/'
 
 PATH = 'content'
 
