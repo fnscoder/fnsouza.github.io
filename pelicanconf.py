@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Felipe N Souza'
 SITENAME = 'FNScoder'
 SITEURL = 'http://fnscoder.com/'
+THEME = 'pelican-hyde'
 
 PATH = 'content'
 
