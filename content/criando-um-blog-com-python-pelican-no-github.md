@@ -71,17 +71,17 @@ Using project associated with current virtual environment.Will save to:
 Done. Your new project is available at /caminho/para/seus/projetos/username-do-github.github.io
 ```
 
-### Versionando o blog com git e hospedando no Githb Pages
+### Versionando o blog com git e hospedando no Github Pages
 
 <p>Após isso a estrutura do projeto estará pronta e é hora de começar a trabalhar com git. Para isso criaremos no github um repositório com o mesmo nome do projeto, ou seja, username-do-github.github.io. No diretório local precisamos iniciar o versionamento com git e adicionar o repositório do github como repositório remoto.</p>
 ```bash
 $ git init
-$ git remote add origin git@github.com:fnscoder/fnscoder.github.io.git
+$ git remote add origin git@github.com:username-do-github/username-do-github.github.io.git
 ```
 
-<p>Organizaremos o projeto em duas branchs:
-* master
-* pelican
+<p>Organizaremos o projeto em duas branchs:<br>
+- master
+- pelican
 Na branch pelican ficarão os arquivos e códigos que irão gerar o site estático e na branch master apenas os arquivos estáticos gerados. Para isso crie um nova branch chamada pelican, adicione as alterações, faça o primeiro commit e suba para o repositório remoto</p>
 ```bash
 $ git checkout -b pelican

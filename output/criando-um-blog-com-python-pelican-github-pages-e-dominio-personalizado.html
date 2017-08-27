@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>FNScoder</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="http://fnscoder.com/theme/css/poole.css" />
+		<link rel="stylesheet" href="http://fnscoder.com/theme/css/hyde.css" />
+		<link rel="stylesheet" href="http://fnscoder.com/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	</head>
+
+	<body class="theme-base-0d">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="http://fnscoder.com/images/avatar.jpg">
+					FNScoder
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">Web developer </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+					<a class="sidebar-nav-item" target="_blank" href="mailto:fnscoder@gmail.com">
+						<i class="fa fa-envelope"></i>
+					</a>
+                    <a class="sidebar-nav-item" target="_blank" href="https://github.com/fnscoder">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a class="sidebar-nav-item" target="_blank" href="https://twitter.com/fnscoder">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="sidebar-nav-item" target="_blank" href="https://www.linkedin.com/in/fnscoder/">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a class="sidebar-nav-item" target="_blank" href="https://drive.google.com/file/d/0B6M0onVHYLkyWGtzWW5pQVJLZzQ/view?usp=sharing">
+                        <i class="fa fa-file-text"></i>
+                    </a>
+		</nav>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Criando um blog com Python, Pelican, Github Pages e domínio personalizado</h1>
+	<span class="post-date">dom 27 agosto 2017</span>
+	<p>Fala galera!</p>
+<p>Nesse post vamos mostrar como preparar o ambiente e criar um blog utilizando Python e Pelican. Depois utilizaremos o Github Pages para hospedar gratuitamente e configurar um domínio personalizado.</p>
+
+<h3>Preparando o ambiente</h3>
+<p>Para preparar o ambiente recomendo fortemente a utilização do virtualenv e virtualenv-wrapper. O virtualenv cria ambientes virtuais que isolam os pacotes python instalados do restante do seu S.O. e o virtualenv-wrapper facilita a utilização do virtualenv. Se tiver problemas para isso recomendo fortemente o post sobre organização de ambiente Python do Henrique Bastos (Link no fim do post)</p>
+
+<p>Com o virtualenv e virtualenv-wrapper instalados e configurados utilizaremos o comando abaixo para criar o ambiente virtual e o diretório no qual vamos trabalhar. Para utilizarmos o guthub pages é importante que o nome do projeto seja seu nome de usuário do github .github.io</p>
+
+<div class="highlight"><pre><span></span>$ mkproject username-do-github.github.io
+</pre></div>
+
+
+<p>Após isso você terá o ambiente virtual criado em seu diretório de ambientes virtuais, a pasta do projeto criada dentro do seu diretório de projetos, já estará com o venv ativo e dentro da pasta do projeto. (Massa neh!) Quando precisar ativar o ambiente basta rodar:</p>
+
+<div class="highlight"><pre><span></span>$ workon username-do-github.github.io
+</pre></div>
+
+
+<p>E para desativá-lo:</p>
+<div class="highlight"><pre><span></span>$ deactivate
+</pre></div>
+
+
+<p>Para listar todos os seus ambientes virtuais basta rodar:</p>
+<div class="highlight"><pre><span></span>$ workon
+</pre></div>
+
+
+<h3>Primeiros passos com Pelican</h3>
+<p>Com o venv ativo vamos instalar o Pelican e o markdown com o pip</p>
+
+<div class="highlight"><pre><span></span>$ pip install pelican markdown
+</pre></div>
+
+
+<p>Para gerar o projeto pelo pelican basta rodar</p>
+<div class="highlight"><pre><span></span>$ pelican-quickstart
+
+Welcome to pelican-quickstart v3.7.1.
+This script will <span class="nb">help</span> you create a new Pelican-based website.
+Please answer the following questions so this script can generate the files
+needed by Pelican.
+
+Using project associated with current virtual environment.Will save to:
+/caminho/para/seus/projetos/username-do-github.github.io
+
+<span class="c1">#as opções em letras maísculas são os padrões</span>
+
+&gt; What will be the title of this web site? <span class="c1"># O título do seu site</span>
+&gt; Who will be the author of this web site? <span class="c1"># O nome do autor (provavelmente o seu)</span>
+&gt; What will be the default language of this web site? <span class="o">[</span>pt<span class="o">]</span> <span class="c1">#Idioma</span>
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> <span class="c1"># Deseja especificar a URL </span>
+&gt; What is your URL prefix? <span class="o">(</span>see above example<span class="p">;</span> no trailing slash<span class="o">)</span> <span class="c1">#sua url personalizada</span>
+&gt; Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span> y   <span class="c1">#Paginação nos posts                     </span>
+&gt; How many articles per page <span class="k">do</span> you want? <span class="o">[</span><span class="m">10</span><span class="o">]</span>        <span class="c1">#Quantos posts por página                          </span>
+&gt; What is your <span class="nb">time</span> zone? <span class="o">[</span>Europe/Paris<span class="o">]</span> America/Sao_Paulo     <span class="c1">#Fuso horário                              </span>
+&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> y <span class="c1">#Altamente recomendado, pois faclita a geração do site estático</span>
+&gt; Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span> y <span class="c1"># Recarregamento automático do server em desenvolvimento</span>
+&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> n                                                      
+&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> n                                                      
+&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> n
+&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> n                                                       
+&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span> n
+&gt; Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> y   <span class="c1">#Github</span>
+&gt; Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> y                                                                                              
+Done. Your new project is available at /caminho/para/seus/projetos/username-do-github.github.io
+</pre></div>
+
+
+<h3>Versionando o blog com git e hospedando no Githb Pages</h3>
+<p>Após isso a estrutura do projeto estará pronta e é hora de começar a trabalhar com git. Para isso criaremos no github um repositório com o mesmo nome do projeto, ou seja, username-do-github.github.io. No diretório local precisamos iniciar o versionamento com git e adicionar o repositório do github como repositório remoto.</p>
+
+<div class="highlight"><pre><span></span>$ git init
+$ git remote add origin git@github.com:fnscoder/fnscoder.github.io.git
+</pre></div>
+
+
+<p>Organizaremos o projeto em duas branchs:
+* master
+* pelican
+Na branch pelican ficarão os arquivos e códigos que irão gerar o site estático e na branch master apenas os arquivos estáticos gerados. Para isso crie um nova branch chamada pelican, adicione as alterações, faça o primeiro commit e suba para o repositório remoto</p>
+
+<div class="highlight"><pre><span></span>$ git checkout -b pelican
+$ git add .
+$ git commit -m <span class="s1">&#39;iniciando branch pelican&#39;</span>
+$ git push origin pelican
+</pre></div>
+
+
+<p>Para publicar o conteúdo estático na branch master utilizaremos o ghp-import, para instalá-lo basta utilizar o pip</p>
+
+<div class="highlight"><pre><span></span>pip install ghp-import
+</pre></div>
+
+
+<p>Para gerar os estáticos e enviar direto para o github basta utilizar o make</p>
+
+<div class="highlight"><pre><span></span>make github
+</pre></div>
+
+
+<h3>Configurando o domínio personalizado</h3>
+<p>Para adicionar o domínio personalizado o primeiro passo é adicionar o endereço de sua URL nos settings do repositório no github. Em seguida precisamos criar um arquivo chamado CNAME contendo o domínio na raiz do projeto. Para isso você deve adicionar o seguinte trecho ao seu pelicanconf.py</p>
+
+<div class="highlight"><pre><span></span><span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;extras/CNAME&#39;</span><span class="p">]</span>
+<span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;extras/CNAME&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;CNAME&#39;</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Isso fará com que o CNAME seja criado no momento da geração dos arquivos estáticos.</p>
+
+<h3>Criando e publicando novos posts</h3>
+<p>Para criar novos posts você deverá criar um novo arquivo markdown na pasta content com o conteúdo do post seguindo a seguinte estrutura</p>
+
+<div class="highlight"><pre><span></span>Title: Meu primeiro post
+Date: <span class="m">2017</span>-08-27 <span class="m">15</span>:30
+Modified: <span class="m">2017</span>-08-27 <span class="m">19</span>:30
+Category: Python
+Tags: pelican, publishing
+Slug: meu-super-post
+Authors: Seu Nome
+Summary: Descrição resumida <span class="k">do</span> post
+
+Conteúdo <span class="k">do</span> post!
+</pre></div>
+
+
+<p>
+ Em seguida add os arquivos alterados ao git, faça commit e suba as alterações para o repositório remoto primeiro para a branch pelican e depois utilizando o make para a branch master.</p>
+
+<div class="highlight"><pre><span></span>$ git add . 
+$ git commit -m <span class="s1">&#39;first post&#39;</span> 
+$ git push origin pelican 
+$ make github
+</pre></div>
+
+
+<p>Pronto! Seu site foi gerado com Python utilizando o Pelican, está hospedado gratuitamente no Github Pages e utilizando um domínio personalizado. Você ainda pode personalizar seu site utilizando os temas e plugins disponíveis [no repositório do pelican no github](https://github.com/getpelican)</p>
+
+<p>Dúvidas, comentários ou sugestões são muito bem vindas!<br><br>
+Até</p>
+
+<p><em>Fonte:</em><br>
+<a href="https://medium.com/welcome-to-the-django/guia-definitivo-para-organizar-meu-ambiente-python-a16e2479b753">Guia para organização de ambiente Python - Henrique Bastos</a><br>
+<a href="http://docs.getpelican.com/en/stable/">Documentação Pelican</a><br>
+<a href="http://pythonclub.com.br/criando-sites-estaticos-com-pelican.html">Criando sites estáticos com Pelican Framework</a><br>
+<a href="http://pythonclub.com.br/github-pages-com-pelican-e-travis-ci.html">Github Pages com Pelican e Travis-CI</a><br>
+<a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/">Using a custom domain with github pages</a></p>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'fnscoder';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+		</div>
+	</body>
+</html>
