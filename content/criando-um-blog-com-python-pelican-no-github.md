@@ -80,8 +80,8 @@ $ git remote add origin git@github.com:username-do-github/username-do-github.git
 ```
 
 <p>Organizaremos o projeto em duas branchs:<br>
-- master
-- pelican
+- master<br>
+- pelican<br>
 Na branch pelican ficarão os arquivos e códigos que irão gerar o site estático e na branch master apenas os arquivos estáticos gerados. Para isso crie um nova branch chamada pelican, adicione as alterações, faça o primeiro commit e suba para o repositório remoto</p>
 ```bash
 $ git checkout -b pelican
